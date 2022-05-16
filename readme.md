@@ -24,16 +24,16 @@ Making the game work and have some fun features will be my priority.
 #### Roadmap ####
 - [X] Have a design for the website
   - [X] Have a cookie friendly color palette
-    - [X] Primary Color             <span style="color:#E84855">Color: **#E84855**</span>
-    - [X] Secondary Color           <span style="color:#6C91C2">Color: **#6C91C2**</span>
-    - [X] Accent/Highlight Color    <span style="color:#7DCD85">Color: **#7DCD85**</span>
-    - [X] Dark Background Color     <span style="color:#14281D">Color: **#14281D**</span>
-    - [X] Replacement for black     <span style="color:#071013">Color: **#071013**</span>
-    - [X] Replacement for white     <span style="color:#EDE3E4">Color: **#EDE3E4**</span>
-    - [X] Dark Cookie Color         <span style="color:#4D1607">Color: **#4D1607**</span>
-    - [X] Light Cookie Color        <span style="color:#DCAA6A">Color: **#DCAA6A**</span>
+    - [X] Primary Color             <span style="color:#E84855">Color: **#E84855**![colorPalettePreview](assets/ReadMeImages/Colors/red.png)</span>
+    - [X] Secondary Color           <span style="color:#6C91C2">Color: **#6C91C2**![colorPalettePreview](assets/ReadMeImages/Colors/blue.png)</span>
+    - [X] Accent/Highlight Color    <span style="color:#7DCD85">Color: **#7DCD85**![colorPalettePreview](assets/ReadMeImages/Colors/greenLight.png)</span>
+    - [X] Dark Background Color     <span style="color:#14281D">Color: **#14281D**![colorPalettePreview](assets/ReadMeImages/Colors/greenDark.png)</span>
+    - [X] Replacement for black     <span style="color:#071013">Color: **#071013**![colorPalettePreview](assets/ReadMeImages/Colors/black.png)</span>
+    - [X] Replacement for white     <span style="color:#EDE3E4">Color: **#EDE3E4**![colorPalettePreview](assets/ReadMeImages/Colors/white.png)</span>
+    - [X] Dark Cookie Color         <span style="color:#4D1607">Color: **#4D1607**![colorPalettePreview](assets/ReadMeImages/Colors/brownDark.png)</span>
+    - [X] Light Cookie Color        <span style="color:#DCAA6A">Color: **#DCAA6A**![colorPalettePreview](assets/ReadMeImages/Colors/brownLight.png)</span>
   - [X] Have a sketch for the home-page that houses the game
-!(homepage game sketch)[assets/ReadMeImages/sketch-for-gamepage.webp]
+![homepage game sketch](assets/ReadMeImages/sketch-for-gamepage.webp)
 - [ ] Upgrade Ideas
   - [ ] The user sells a cookie every x seconds and gains money to buy upgrades instead of using cookies
     - [ ] Study Economy -> Cookies are converted to money quicker (Better business plan, more sales)
