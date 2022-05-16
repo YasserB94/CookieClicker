@@ -20,7 +20,7 @@ Making the game work and have some fun features will be my priority.
 - [ ] Add an about/contact page
 - [ ] Use acutal cookies(?) to keep player's score stored
 - [ ] Make the site responsive
-
+- [ ] Implement Upgrade ideas
 #### Roadmap ####
 - [X] Have a design for the website
   - [X] Have a cookie friendly color palette
@@ -34,6 +34,15 @@ Making the game work and have some fun features will be my priority.
     - [X] Light Cookie Color        <span style="color:#DCAA6A">Color: **#DCAA6A**![colorPalettePreview](assets/ReadMeImages/Colors/brownLight.png)</span>
   - [X] Have a sketch for the home-page that houses the game
 ![homepage game sketch](assets/ReadMeImages/sketch-for-gamepage.webp)
+- [X] Create the design in html and css
+- [X] Add a cookie to the page
+- [X] Add a dedicated spot to display total cookies baked
+- [ ] Start the JS logic of the game
+  - [ ] Implement a game update loop to prepare for logic
+    - [ ] Seperate update to logic from UI update
+  - [ ] Make the cookie clickable
+    - [ ] Add a counter to count amount of cookies baked
+
 - [ ] Upgrade Ideas
   - [ ] The user sells a cookie every x seconds and gains money to buy upgrades instead of using cookies
     - [ ] Study Economy -> Cookies are converted to money quicker (Better business plan, more sales)
