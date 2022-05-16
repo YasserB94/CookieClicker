@@ -22,15 +22,30 @@ Making the game work and have some fun features will be my priority.
 - [ ] Make the site responsive
 
 #### Roadmap ####
-- [ ] Have a design for the website
+- [X] Have a design for the website
   - [X] Have a cookie friendly color palette
-    - [X] Primary Color             Color:  #E84855
-    - [X] Secondary Color           Color:  #6C91C2
-    - [X] Accent/Highlight Color    Color:  #7DCD85
-    - [X] Dark Background Color     Color:  #14281D
-    - [X] Replacement for black     Color:  #071013
-    - [X] Replacement for white     Color:  #EDE3E4
-    - [X] Dark Cookie Color         Color:  #4D1607
-    - [X] Light Cookie Color        Color:  #DCAA6A
-  - [ ] Have a sketch for the home-page that houses the game
-  
+    - [X] Primary Color             <span style="color:#E84855">Color: **#E84855**</span>
+    - [X] Secondary Color           <span style="color:#6C91C2">Color: **#6C91C2**</span>
+    - [X] Accent/Highlight Color    <span style="color:#7DCD85">Color: **#7DCD85**</span>
+    - [X] Dark Background Color     <span style="color:#14281D">Color: **#14281D**</span>
+    - [X] Replacement for black     <span style="color:#071013">Color: **#071013**</span>
+    - [X] Replacement for white     <span style="color:#EDE3E4">Color: **#EDE3E4**</span>
+    - [X] Dark Cookie Color         <span style="color:#4D1607">Color: **#4D1607**</span>
+    - [X] Light Cookie Color        <span style="color:#DCAA6A">Color: **#DCAA6A**</span>
+  - [X] Have a sketch for the home-page that houses the game
+!(homepage game sketch)[assets/ReadMeImages/sketch-for-gamepage.webp]
+- [ ] Upgrade Ideas
+  - [ ] The user sells a cookie every x seconds and gains money to buy upgrades instead of using cookies
+    - [ ] Study Economy -> Cookies are converted to money quicker (Better business plan, more sales)
+    - [ ] Improve Recipe -> Cookies are converted to more money (Nicer cookies, larger price)
+    - [ ] Invest -> The user invests its current money and will get a passive money income
+  - [ ] Hire staff the user gets a helper that bakes cookies in a passive manner Tough good work aint cheap and cheap work aint good, *So tip your bartender!*
+    - [ ] Upgrade staff -> Train staff/hire someone better that has less chance of burning a cookie
+    - [ ] Improve Work conditions -> Staff will bake at a faster rate
+    - [ ] Possible debuff! The staff spills and ruins a batch of cookies in the shop - halves the cookies you bake for a bit
+    - [ ] Possible buff! The staff motivates you and gives you x seconds chance of double cookies\
+    - [ ] Multiple staff members ??
+  - [ ] The user bakes cookies by clicking
+    - [ ] Improve baking skills -> Less chance to burn a cookie
+    - [ ] Improve Oven -> Amount of cookies that make it into the store has the chance to be a higher number
+    - [ ] Holiday -> No cookies can be sold/made for x time, but when the time ends you get double sales and double cookies baked for x seconds(Battery recharged!)
