@@ -23,9 +23,14 @@ Making the game work and have some fun features will be my priority.
 
 #### Roadmap ####
 - [ ] Have a design for the website
-  - [ ] Have a cookie friendly color palette
-    - [ ] Primary Color
-    - [ ] Secondary Color
-    - [ ] Accent/Highlight Color
-    - [ ] Replacement for black
-    - [ ] Replacement for white
+  - [X] Have a cookie friendly color palette
+    - [X] Primary Color             Color:  #E84855
+    - [X] Secondary Color           Color:  #6C91C2
+    - [X] Accent/Highlight Color    Color:  #7DCD85
+    - [X] Dark Background Color     Color:  #14281D
+    - [X] Replacement for black     Color:  #071013
+    - [X] Replacement for white     Color:  #EDE3E4
+    - [X] Dark Cookie Color         Color:  #4D1607
+    - [X] Light Cookie Color        Color:  #DCAA6A
+  - [ ] Have a sketch for the home-page that houses the game
+  
