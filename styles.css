@@ -138,6 +138,7 @@ section {
 .game-element-grid .game .cookie{
     grid-area: 2 / 1 / 4 / 4;
     height: 100%;
+    user-select: none;
 }
 .game-element-grid .game .cookie img{
    max-width: 100%;

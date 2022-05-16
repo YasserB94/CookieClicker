@@ -16,6 +16,10 @@ export function bakeCookie() {
 export function checkShopCookieStock() {
     return cookiesInShop;
 }
+export function addCookie(amount){
+    cookiesInShop+=amount;
+    totalCookiesBaked+=amount;
+}
 export function sellCookie(amountOfCookiesSold) {
     cookiesInShop -= 1 * amountOfCookiesSold;
 }
