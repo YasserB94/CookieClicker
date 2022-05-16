@@ -1,5 +1,5 @@
 //IMPORTS
-import {update as updateShop,draw as drawShop}from './scripts/shop.js';
+import {update as updateShop,draw as drawShop}from './scripts/upgrades.js';
 import {update as updateGameStats,draw as drawGameStats} from './scripts/gameStats.js'
 import {update as updateGamePanel,draw as drawGamePanel} from './scripts/gamePanel.js'
 
