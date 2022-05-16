@@ -41,7 +41,7 @@ Making the game work and have some fun features will be my priority.
 - [X] Add a cookie to it's game panel
 - [X] Add a cookie click counter to it's game panel
 ![State of gamesection when starting js logic](assets/ReadMeImages/UI-starting-logic.png)
-- [ ]JS logic of the clicker
+- [X]JS logic of the clicker
   - [X] Implement a game update loop to prepare for logic
     - [X] Ask the browser when it can update the game
     - [X] Configure the game to update once/second
@@ -50,6 +50,11 @@ Making the game work and have some fun features will be my priority.
 	split in two functions: update() and draw()
   - [X] Make the cookie clickable
     - [X] Add a counter to count amount of cookies baked
+- [ ] Add some sort of multiplier
+  - [ ] Add oven option to upgrade-shop pane
+  - [ ] Add oven level indicator to upgrade-stats pane
+  - [ ] Add price to oven upgrade
+  - [ ] Make cookie clicker generate random amount of cookies based on oven level
 
 - [ ] Upgrade Ideas
   - [ ] The user sells a cookie every x seconds and gains money to buy upgrades instead of using cookies
