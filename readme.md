@@ -35,8 +35,11 @@ Making the game work and have some fun features will be my priority.
   - [X] Have a sketch for the home-page that houses the game
 ![homepage game sketch](assets/ReadMeImages/sketch-for-gamepage.webp)
 - [X] Create the design in html and css
-- [X] Add a cookie to the page
-- [X] Add a dedicated spot to display total cookies baked
+![site template in html and css](assets/ReadMeImages/site-template.png)
+- [X] Create the base site layout in html/css
+- [X] Create the game section
+- [X] Add a cookie to it's game panel
+- [X] Add a cookie click counter to it's game panel
 ![State of gamesection when starting js logic](assets/ReadMeImages/UI-starting-logic.png)
 - [ ] Start the JS logic of the game
   - [ ] Implement a game update loop to prepare for logic
