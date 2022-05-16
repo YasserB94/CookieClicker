@@ -7,13 +7,13 @@ Due to the challenge I will focus on making this game work on a desktop computer
 Making the game work and have some fun features will be my priority.
 ### Goals ###
 - [X] Have a basic site that houses the game
-- [ ] Have a clickable cookie and a visible score/credit count
-- [ ] Have a store with upgrades
-  - [ ] Make upgrades cost points
+- [x] Have a clickable cookie and a visible score/credit count
+- [x] Have a store with upgrades
+  - [x] Make upgrades cost points
   - [ ] Have a passive income upgrade
-  - [ ] Make upgrades upgradeable with increased cost
-  - [ ] Have an upgrade that increases cookies gained per click for a set amount of time
-  - [ ] You can't buy upgrades if you can't afford them
+  - [x] Make upgrades upgradeable with increased cost
+  - [x] Have an upgrade that increases cookies gained per click for a set amount of time
+  - [x] You can't buy upgrades if you can't afford them
 - [ ] Make it pretty
 #### Stretch Goals ####
 - [ ] Add a bloglike page to the site that has a roadmap of how the game came to be
@@ -24,14 +24,22 @@ Making the game work and have some fun features will be my priority.
 #### Roadmap ####
 - [X] Have a design for the website
   - [X] Have a cookie friendly color palette
-    - [X] Primary Color             <span style="color:#E84855">Color: **#E84855**![colorPalettePreview](assets/ReadMeImages/Colors/red.png)</span>
-    - [X] Secondary Color           <span style="color:#6C91C2">Color: **#6C91C2**![colorPalettePreview](assets/ReadMeImages/Colors/blue.png)</span>
-    - [X] Accent/Highlight Color    <span style="color:#7DCD85">Color: **#7DCD85**![colorPalettePreview](assets/ReadMeImages/Colors/greenLight.png)</span>
-    - [X] Dark Background Color     <span style="color:#14281D">Color: **#14281D**![colorPalettePreview](assets/ReadMeImages/Colors/greenDark.png)</span>
-    - [X] Replacement for black     <span style="color:#071013">Color: **#071013**![colorPalettePreview](assets/ReadMeImages/Colors/black.png)</span>
-    - [X] Replacement for white     <span style="color:#EDE3E4">Color: **#EDE3E4**![colorPalettePreview](assets/ReadMeImages/Colors/white.png)</span>
-    - [X] Dark Cookie Color         <span style="color:#4D1607">Color: **#4D1607**![colorPalettePreview](assets/ReadMeImages/Colors/brownDark.png)</span>
-    - [X] Light Cookie Color        <span style="color:#DCAA6A">Color: **#DCAA6A**![colorPalettePreview](assets/ReadMeImages/Colors/brownLight.png)</span>
+    - [X] Primary Color             <span style="color:#E84855">Color: **#E84855**</span>
+                        - ![colorPalettePreview](assets/ReadMeImages/Colors/red.png)
+    - [X] Secondary Color           <span style="color:#6C91C2">Color: **#6C91C2**</span>
+                        - ![colorPalettePreview](assets/ReadMeImages/Colors/blue.png)
+    - [X] Accent/Highlight Color    <span style="color:#7DCD85">Color: **#7DCD85**</span>
+                        - ![colorPalettePreview](assets/ReadMeImages/Colors/greenLight.png)
+    - [X] Dark Background Color     <span style="color:#14281D">Color: **#14281D**</span>
+                        - ![colorPalettePreview](assets/ReadMeImages/Colors/greenDark.png)
+    - [X] Replacement for black     <span style="color:#071013">Color: **#071013**</span>
+                        - ![colorPalettePreview](assets/ReadMeImages/Colors/black.png)
+    - [X] Replacement for white     <span style="color:#EDE3E4">Color: **#EDE3E4**</span>
+                        - ![colorPalettePreview](assets/ReadMeImages/Colors/white.png)
+    - [X] Dark Cookie Color         <span style="color:#4D1607">Color: **#4D1607**</span>
+                        - ![colorPalettePreview](assets/ReadMeImages/Colors/brownDark.png)
+    - [X] Light Cookie Color        <span style="color:#DCAA6A">Color: **#DCAA6A**</span>
+                        - ![colorPalettePreview](assets/ReadMeImages/Colors/brownLight.png)
   - [X] Have a sketch for the home-page that houses the game
 ![homepage game sketch](assets/ReadMeImages/sketch-for-gamepage.webp)
 - [X] Create the design in html and css
@@ -41,7 +49,7 @@ Making the game work and have some fun features will be my priority.
 - [X] Add a cookie to it's game panel
 - [X] Add a cookie click counter to it's game panel
 ![State of gamesection when starting js logic](assets/ReadMeImages/UI-starting-logic.png)
-- [X]JS logic of the clicker
+- [X] JS logic of the clicker
   - [X] Implement a game update loop to prepare for logic
     - [X] Ask the browser when it can update the game
     - [X] Configure the game to update once/second
@@ -50,14 +58,24 @@ Making the game work and have some fun features will be my priority.
 	split in two functions: update() and draw()
   - [X] Make the cookie clickable
     - [X] Add a counter to count amount of cookies baked
-- [ ] Add some sort of multiplier
-  - [ ] Add oven option to upgrade-shop pane
-  - [ ] Add oven level indicator to upgrade-stats pane
-  - [ ] Add price to oven upgrade
-  - [ ] Make cookie clicker generate random amount of cookies based on oven level
+- [X] Add logic to sell shop cookies and convert to credits
+  - [X] set cookieprice and sell a cookie every x random seconds
+  - [ ] implement upgrade to get more money per cookie sold
+  - [ ] implement upgrade to sell cookies faster
+- [X] Add some sort of multiplier
+  - [X] Add oven option to upgrade-shop pane
+  - [X] Add oven level indicator to upgrade-stats pane
+  - [X] Add price to oven upgrade
+  - [X] Make cookie clicker increase cookies per click based on oven level
+- [X] Add Economics upgrade
+  - [X] Sell more cookies at a time
+  - [X] Added extra check to make sure there are enough cookies
+- [ ] Add Cookie Quality Upgrade
+  - [ ] Earn tips, the user has a small chance to gain an extra credit/cookie sold
+
 
 - [ ] Upgrade Ideas
-  - [ ] The user sells a cookie every x seconds and gains money to buy upgrades instead of using cookies
+  - [X] The user sells a cookie every x seconds and gains money to buy upgrades instead of using cookies
     - [ ] Study Economy -> Cookies are converted to money quicker (Better business plan, more sales)
     - [ ] Improve Recipe -> Cookies are converted to more money (Nicer cookies, larger price)
     - [ ] Invest -> The user invests its current money and will get a passive money income
@@ -69,5 +87,6 @@ Making the game work and have some fun features will be my priority.
     - [ ] Multiple staff members ??
   - [ ] The user bakes cookies by clicking
     - [ ] Improve baking skills -> Less chance to burn a cookie
-    - [ ] Improve Oven -> Amount of cookies that make it into the store has the chance to be a higher number
+    - [X] Improve Oven -> Amount of cookies that make it into the store has the chance to be a higher number
+        - Currently increases amount of cookies baked/click
     - [ ] Holiday -> No cookies can be sold/made for x time, but when the time ends you get double sales and double cookies baked for x seconds(Battery recharged!)
