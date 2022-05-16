@@ -41,11 +41,15 @@ Making the game work and have some fun features will be my priority.
 - [X] Add a cookie to it's game panel
 - [X] Add a cookie click counter to it's game panel
 ![State of gamesection when starting js logic](assets/ReadMeImages/UI-starting-logic.png)
-- [ ] Start the JS logic of the game
-  - [ ] Implement a game update loop to prepare for logic
-    - [ ] Seperate update to logic from UI update
-  - [ ] Make the cookie clickable
-    - [ ] Add a counter to count amount of cookies baked
+- [ ]JS logic of the clicker
+  - [X] Implement a game update loop to prepare for logic
+    - [X] Ask the browser when it can update the game
+    - [X] Configure the game to update once/second
+	can be modified with a variable: FPS
+    - [X] Seperate update to logic from UI update
+	split in two functions: update() and draw()
+  - [X] Make the cookie clickable
+    - [X] Add a counter to count amount of cookies baked
 
 - [ ] Upgrade Ideas
   - [ ] The user sells a cookie every x seconds and gains money to buy upgrades instead of using cookies
