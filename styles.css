@@ -184,9 +184,24 @@ section {
 }
 .game-element-grid .game-upgrade-status {
     grid-area: 2 / 2 / 3 / 3;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
 }
+.upgrade-status-container,.upgrade-shop-container{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+
 .game-element-grid .game-upgrade-shop {
     grid-area: 3 / 2 / 5 / 3;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
 }
 /*---FOOTER---*/
 footer {
