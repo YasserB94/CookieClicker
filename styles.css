@@ -179,6 +179,9 @@ section {
     text-align: center;
     align-items: center;
 }
+.game-element-grid .game-stats .game-stats-section h3{
+    margin-bottom: .5rem;
+}
 .game-element-grid .game-upgrade-status {
     grid-area: 2 / 2 / 3 / 3;
 }
