@@ -219,6 +219,7 @@ section {
 .shop-item img{
     height: 5rem;
     aspect-ratio: 1/1;
+    cursor: pointer;
 }
 
 
