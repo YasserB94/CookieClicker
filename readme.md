@@ -6,7 +6,7 @@ This project came to be as a 2 day [BeCode](https://becode.org) assignment to im
 Due to the challenge I will focus on making this game work on a desktop computer, improving the UI responsiveness for mobile will be one of the last stretchgoals.
 Making the game work and have some fun features will be my priority.
 ### Goals ###
-- [ ] Have a basic site that houses the game
+- [X] Have a basic site that houses the game
 - [ ] Have a clickable cookie and a visible score/credit count
 - [ ] Have a store with upgrades
   - [ ] Make upgrades cost points
