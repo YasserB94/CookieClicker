@@ -172,6 +172,7 @@ section {
 .game-element-grid .game .staff{
     grid-area: 4 / 3 / 5 / 4;
 }
+/*Stats panel*/
 .game-element-grid .game-stats {
     grid-area: 1 / 2 / 2 / 3;
     display: flex;
@@ -182,6 +183,7 @@ section {
 .game-element-grid .game-stats .game-stats-section h3{
     margin-bottom: .5rem;
 }
+/*Upgrade levels & shop*/
 .game-element-grid .game-upgrade-status {
     grid-area: 2 / 2 / 3 / 3;
     display: flex;
@@ -189,20 +191,37 @@ section {
     align-items: center;
     flex-direction: column;
 }
-.upgrade-status-container,.upgrade-shop-container{
+.status-item{
     display: flex;
-    align-content: center;
-    justify-content: center;
-    text-align: center;
+    flex-direction: column;
+    align-items: center;
 }
-
+.status-item img{
+    height: 5rem;
+    aspect-ratio: 1/1;
+}
 .game-element-grid .game-upgrade-shop {
-    grid-area: 3 / 2 / 5 / 3;
+    grid-area: 3 / 2 / 4 / 3;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
 }
+.game-upgrade-shop-container{
+    display: flex;
+    max-height: 100%;
+}
+.shop-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.shop-item img{
+    height: 5rem;
+    aspect-ratio: 1/1;
+}
+
+
 /*---FOOTER---*/
 footer {
     margin-top: auto;
