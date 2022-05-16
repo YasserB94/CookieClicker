@@ -19,12 +19,22 @@ export function update() {
 export function draw() {
     drawCredits();
     drawShop();
+    drawEconomy();
 
+}
+function drawShop() {
+    document.getElementById('oven-upgrade-cost').innerText = `${upgradeCosts[ovenLevel]} credits`;
+    document.getElementById('oven-level').innerText = `Level: ${ovenLevel+1}`
+    document.getElementById('cookies-per-click').innerText = `Cookies per click: ${ovenmultiplier[ovenLevel]}`
+}
+function drawCredits() {
+    document.getElementById('credits').innerText = '';
+    document.getElementById('credits').innerText = credits;
 }
 //Credits
 function updateCredits() {
-    if (checkShopCookieStock()) {
-        const cookiesToSell = economyMultiplier[economicLevel];
+    const cookiesToSell = economyMultiplier[economicLevel];
+    if (checkShopCookieStock()>cookiesToSell) {
         sellCookie(cookiesToSell);
         cookiesToCredits(cookiesToSell)
     } else {
@@ -33,10 +43,6 @@ function updateCredits() {
 }
 function cookiesToCredits(amount) {
     credits += amount * 1 * qualitymultiplier[cookieQuality];
-}
-function drawCredits() {
-    document.getElementById('credits').innerText = '';
-    document.getElementById('credits').innerText = credits;
 }
 //OVEN
 document.getElementById('upgrade-oven').addEventListener('click', upgradeOven)
@@ -51,8 +57,22 @@ function upgradeOven() {
 export function getOvenMultiplier() {
     return ovenmultiplier[ovenLevel];
 }
-function drawShop() {
-    document.getElementById('oven-upgrade-cost').innerText = `${upgradeCosts[ovenLevel]} credits`;
-    document.getElementById('oven-level').innerText = `Level: ${ovenLevel+1}`
-    document.getElementById('cookies-per-click').innerText = `Cookies per click: ${ovenmultiplier[ovenLevel]}`
+//Economy
+document.getElementById('upgrade-economy').addEventListener('click',upgradeEconomy)
+function upgradeEconomy(){
+    if (credits >= upgradeCosts[economicLevel]) {
+        credits -= upgradeCosts[economicLevel]
+        economicLevel += 1
+    } else {
+        return;
+    }
+}
+function drawEconomy(){
+    document.getElementById('economy-upgrade-cost').innerText = `${upgradeCosts[economicLevel]} credits`;
+    document.getElementById('economy-level').innerText = `Level: ${economicLevel+1}`
+    document.getElementById('credits-per-cookie').innerText = `Credits per Cookie: ${economyMultiplier[economicLevel]}`
+
+}
+export function getEconomyMultiplier(){
+    return economyMultiplier[economicLevel];
 }

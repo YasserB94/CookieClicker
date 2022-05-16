@@ -6,7 +6,6 @@
     list-style-type: none;
     color: var(--clr-white);
 }
-
 :root {
     /*--COLORS--*/
     --clr-primary: #E84855;
@@ -20,7 +19,6 @@
     /*--PADDING--*/
     --padd-UI-global: 1rem;
 }
-
 body {
     height: 100vh;
     display: flex;
@@ -31,7 +29,6 @@ body {
     max-width: 100vw;
     font-size: 16px;
 }
-
 /*---HEADER---*/
 header {
     width: 100%;
@@ -42,30 +39,25 @@ header {
     justify-content: space-between;
 
 }
-
 header>.page-title {
     color: var(--clr-cookie-light);
     text-transform: uppercase;
     font-size: 2rem;
 }
-
 header>.social-tags {
     justify-content: center;
     align-content: center;
 }
-
 .social-tags>a {
     padding: .125rem .5rem;
     color: var(--clr-cookie-light);
     background-color: var(--clr-cookie-dark);
     border-radius: .125rem;
 }
-
 .social-tags>a:hover {
     color: var(--clr-cookie-dark);
     background-color: var(--clr-cookie-light);
 }
-
 /*---NAV---*/
 .global-nav {
     background-color: var(--clr-bg);
@@ -73,13 +65,11 @@ header>.social-tags {
     justify-content: flex-end;
     padding: var(--padd-UI-global);
 }
-
 .global-nav-list {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .global-nav-link {
     display: block;
     font-size: 2rem;
@@ -87,26 +77,21 @@ header>.social-tags {
     text-transform: uppercase;
     color: var(--clr-primary);
 }
-
 .global-nav-link:hover {
     color: var(--clr-accent);
 }
-
 .global-nav-link:active,
 .active {
     text-decoration: underline;
     text-decoration-color: var(--clr-secondary);
 }
-
 .active:hover {
     color: var(--clr-primary);
 }
-
 /*---GAME---*/
 section {
     padding: var(--padd-UI-global);
 }
-
 .game-element-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -130,7 +115,6 @@ section {
     padding: var(--padd-UI-global);
     border-radius: calc(var(--padd-UI-global)/2);
 }
-
 .game-element-grid .game {
     grid-area: 1 / 1 / 5 / 2;
     display: grid;
@@ -165,12 +149,16 @@ section {
 }
 .game-element-grid .game .bonus-active{
     grid-area: 4 / 1 / 5 / 2;
+    height: 10%;
+
 }
 .game-element-grid .game .bonus-passive{
     grid-area: 4 / 2 / 5 / 3;
+    height: 10%;
 }
 .game-element-grid .game .staff{
     grid-area: 4 / 3 / 5 / 4;
+    height: 10%;
 }
 /*Stats panel*/
 .game-element-grid .game-stats {
@@ -191,6 +179,10 @@ section {
     align-items: center;
     flex-direction: column;
 }
+.upgrade-status-container{
+    display: flex;
+    justify-content: space-between;
+}
 .status-item{
     display: flex;
     flex-direction: column;
@@ -207,9 +199,9 @@ section {
     align-items: center;
     flex-direction: column;
 }
-.game-upgrade-shop-container{
+.shop-item-container{
     display: flex;
-    max-height: 100%;
+    justify-content: space-between;
 }
 .shop-item{
     display: flex;

@@ -1,4 +1,4 @@
-import { getOvenMultiplier } from './upgrades.js'
+import { getOvenMultiplier,getEconomyMultiplier } from './upgrades.js'
 //Will contain the model and logic for the game-stats-panel
 //Cookies Baked,Cookies in Shop, Credits
 let totalCookiesBaked = 0;
@@ -14,14 +14,9 @@ export function bakeCookie() {
     cookiesInShop += 1 * getOvenMultiplier();
 }
 export function checkShopCookieStock() {
-    if(cookiesInShop<1){
-        return false;
-    }else{
-        return true;
-    }
+    return cookiesInShop;
 }
 export function sellCookie(amountOfCookiesSold) {
-    if (!cookiesInShop > 0) return;
     cookiesInShop -= 1 * amountOfCookiesSold;
 }
 function drawCookiesBaked() {
