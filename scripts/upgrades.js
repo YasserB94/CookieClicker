@@ -11,7 +11,7 @@ let economicLevel = 0;
 let ovenmultiplier = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 let qualitymultiplier = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 let economyMultiplier = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-let upgradeCosts = [10,50,100,250,500,1000,2500,5000,7500,10000]
+let upgradeCosts = [10, 50, 100, 250, 500, 1000, 2500, 5000, 7500, 10000]
 export function update() {
     updateCredits();
 
@@ -26,12 +26,12 @@ function updateCredits() {
     if (checkShopCookieStock()) {
         const cookiesToSell = economyMultiplier[economicLevel];
         sellCookie(cookiesToSell);
-        increaseCredits(cookiesToSell)
+        cookiesToCredits(cookiesToSell)
     } else {
         return;
     }
 }
-function increaseCredits(amount) {
+function cookiesToCredits(amount) {
     credits += amount * 1 * qualitymultiplier[cookieQuality];
 }
 function drawCredits() {
@@ -39,18 +39,20 @@ function drawCredits() {
     document.getElementById('credits').innerText = credits;
 }
 //OVEN
-document.getElementById('upgrade-oven').addEventListener('click',upgradeOven)
-function upgradeOven(){
-    if(credits>=upgradeCosts[ovenLevel]){
-        credits-=upgradeCosts[ovenLevel]
-        ovenLevel+=1
-    }else{
+document.getElementById('upgrade-oven').addEventListener('click', upgradeOven)
+function upgradeOven() {
+    if (credits >= upgradeCosts[ovenLevel]) {
+        credits -= upgradeCosts[ovenLevel]
+        ovenLevel += 1
+    } else {
         return;
     }
 }
 export function getOvenMultiplier() {
     return ovenmultiplier[ovenLevel];
 }
-function drawShop(){
-document.getElementById('oven-upgrade-cost').innerText = `${upgradeCosts[ovenLevel]} credits`
+function drawShop() {
+    document.getElementById('oven-upgrade-cost').innerText = `${upgradeCosts[ovenLevel]} credits`;
+    document.getElementById('oven-level').innerText = `Level: ${ovenLevel+1}`
+    document.getElementById('cookies-per-click').innerText = `Cookies per click: ${ovenmultiplier[ovenLevel]}`
 }
