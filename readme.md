@@ -37,6 +37,7 @@ Making the game work and have some fun features will be my priority.
 - [X] Create the design in html and css
 - [X] Add a cookie to the page
 - [X] Add a dedicated spot to display total cookies baked
+![State of gamesection when starting js logic](assets/ReadMeImages/UI-starting-logic.png)
 - [ ] Start the JS logic of the game
   - [ ] Implement a game update loop to prepare for logic
     - [ ] Seperate update to logic from UI update
