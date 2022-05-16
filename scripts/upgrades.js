@@ -1,8 +1,9 @@
 import { sellCookie, checkShopCookieStock, addCookie } from "./gameStats.js";
 
-
+//Stats
+let cookiesBakedByStaffPerSecond = 0;
 //Credits
-let credits = 100000;
+let credits = 0;
 //Upgrade levels
 let ovenLevel = 0;
 let cookieQuality = 0;
@@ -74,6 +75,9 @@ function drawStaff() {
         newStaffListElement.innerText = staffmember.name;
         document.getElementById('staff-list').appendChild(newStaffListElement)
     });
+    document.getElementById('cookies-by-staff-per-minute').innerText = `Staff cookies baked per min: ${cookiesBakedByStaffPerSecond*60}`
+    cookiesBakedByStaffPerSecond = 0;
+
 }
 //Credits
 function updateCredits() {
@@ -163,8 +167,10 @@ function upgradeStaff() {
     }
 }
 function staffBakesCookies() {
+    
     hiredStaff.forEach(staffmember => {
         const cookiesBakedbyStaffMember = staffmember.workSpeed;
+        cookiesBakedByStaffPerSecond+=cookiesBakedbyStaffMember;
         addCookie(cookiesBakedbyStaffMember);
     });
 }
@@ -180,8 +186,6 @@ function createStaffMember() {
     }
     staffPool.push(newStaffMember);
 }
-
-
 function randomNumber(max) {
     return Math.floor(Math.random() * max)
 }
