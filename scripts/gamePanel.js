@@ -1,11 +1,9 @@
 import {bakeCookie} from './gameStats.js'
 export function update(){
-    console.log('@@gamePanel Draw')
 
 }
 
 export function draw(){
-    console.log('@@gamePanel Draw')
 
 }
 

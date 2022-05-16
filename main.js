@@ -4,8 +4,7 @@ import {update as updateGameStats,draw as drawGameStats} from './scripts/gameSta
 import {update as updateGamePanel,draw as drawGamePanel} from './scripts/gamePanel.js'
 
 let timeSinceLastRender = 0;
-const FPS = 1;
-let framecounter = 0;
+const FPS = 5;
 function main(currentTime) {
     //Ask the browser if the function can be ran
     window.requestAnimationFrame(main);
@@ -17,14 +16,11 @@ function main(currentTime) {
     timeSinceLastRender = currentTime;
     update();
     draw();
-    framecounter++
-    console.log(`Total Frames Ran: ${framecounter}`)
 }
 //Run Game
 window.requestAnimationFrame(main);
 
 function update() {
-    console.log('-----Game Model Updated')
     updateGameStats();
     updateGamePanel();
     updateShop();
@@ -32,7 +28,6 @@ function update() {
 }
 
 function draw() {
-    console.log('-----Game View Updated')
     drawGameStats();
     drawGamePanel();
     drawShop();
