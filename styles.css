@@ -42,25 +42,30 @@ header {
     justify-content: space-between;
 
 }
+
 header>.page-title {
     color: var(--clr-cookie-light);
     text-transform: uppercase;
     font-size: 2rem;
 }
+
 header>.social-tags {
     justify-content: center;
     align-content: center;
 }
+
 .social-tags>a {
     padding: .125rem .5rem;
     color: var(--clr-cookie-light);
     background-color: var(--clr-cookie-dark);
     border-radius: .125rem;
 }
+
 .social-tags>a:hover {
     color: var(--clr-cookie-dark);
     background-color: var(--clr-cookie-light);
 }
+
 /*---NAV---*/
 .global-nav {
     background-color: var(--clr-bg);
@@ -68,11 +73,13 @@ header>.social-tags {
     justify-content: flex-end;
     padding: var(--padd-UI-global);
 }
+
 .global-nav-list {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .global-nav-link {
     display: block;
     font-size: 2rem;
@@ -80,25 +87,95 @@ header>.social-tags {
     text-transform: uppercase;
     color: var(--clr-primary);
 }
+
 .global-nav-link:hover {
     color: var(--clr-accent);
 }
+
 .global-nav-link:active,
 .active {
     text-decoration: underline;
     text-decoration-color: var(--clr-secondary);
 }
+
 .active:hover {
     color: var(--clr-primary);
 }
+
+/*---GAME---*/
+section {
+    padding: var(--padd-UI-global);
+}
+
+.game-element-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 16px;
+    grid-row-gap: 0px;
+    height: 50vh;
+}
+
+.game-element-grid .game,
+.game-element-grid .game-stats,
+.game-element-grid .game-upgrade-status,
+.game-element-grid .game-upgrade-shop {
+    background-color: var(--clr-bg);
+    margin: .25rem;
+    padding: var(--padd-UI-global);
+    border-radius: calc(var(--padd-UI-global)/2);
+}
+
+.game-element-grid .game {
+    grid-area: 1 / 1 / 5 / 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 8px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.game-element-grid .game .buffs{
+    grid-area: 1 / 1 / 2 / 2;
+}
+.game-element-grid .game .debuffs{
+    grid-area: 1 / 3 / 2 / 4;
+}
+.game-element-grid .game .cookie{
+    grid-area: 2 / 1 / 4 / 4;
+}
+.game-element-grid .game .bonus-active{
+    grid-area: 4 / 1 / 5 / 2;
+}
+.game-element-grid .game .bonus-passive{
+    grid-area: 4 / 2 / 5 / 3;
+}
+.game-element-grid .game .staff{
+    grid-area: 4 / 3 / 5 / 4;
+}
+.game-element-grid .game-stats {
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.game-element-grid .game-upgrade-status {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.game-element-grid .game-upgrade-shop {
+    grid-area: 3 / 2 / 5 / 3;
+}
+
 /*---FOOTER---*/
-footer{
+footer {
     margin-top: auto;
     display: flex;
     justify-content: center;
     background-color: var(--clr-bg);
     padding: var(--padd-UI-global);
 }
-footer p{
+
+footer p {
     color: var(--clr-cookie-light);
 }
