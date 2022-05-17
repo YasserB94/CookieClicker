@@ -1,6 +1,7 @@
 import { sellCookie, checkShopCookieStock, addCookie } from "./gameStats.js";
 
 //Stats
+let credits = 0;
 let cookiesBakedByStaffPerSecond = 0;
 //Upgrade levels
 let ovenLevel = 0;
