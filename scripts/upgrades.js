@@ -2,8 +2,6 @@ import { sellCookie, checkShopCookieStock, addCookie } from "./gameStats.js";
 
 //Stats
 let cookiesBakedByStaffPerSecond = 0;
-//Credits
-let credits = 500000;
 //Upgrade levels
 let ovenLevel = 0;
 let cookieQuality = 0;
@@ -107,6 +105,8 @@ function drawRentedOven() {
         document.getElementById('rent-oven-title').innerText = "";
         document.getElementById('rent-oven-timer').innerText = "";
     }
+    const currentStaffCount = hiredStaff.length;
+    document.getElementById('rent-oven-cost').innerText = `${currentStaffCount*250} credits`;
 
 }
 function drawQuality() {
@@ -198,7 +198,6 @@ function upgradeStaff() {
             staffPool.splice(randomIndex, 1)
 
             hiredStaff.push(newStaff)
-            console.log(staffPool)
             //If a member gets hired, the chance and cost go back down
             staffLevel = 0;
             staffIncreasedCostPerMember = (hiredStaff.length * 250);
@@ -277,8 +276,10 @@ document.getElementById('rent-oven').addEventListener('click', rentOven);
 let ovenRentTime = 0;
 let ovenRentTimer;
 function rentOven() {
-    if (credits >= 1000) {
-        credits -= 1000;
+    const currentStaffCount = hiredStaff.length;
+
+    if (credits >= 250*currentStaffCount && currentStaffCount!=0) {
+        credits -= currentStaffCount*250;
         ovenRented = true;
         ovenRentTime += 10;
         ovenRentTimer = setInterval(reduceRentTime, 1000);
@@ -289,7 +290,6 @@ function rentOven() {
 function reduceRentTime() {
     if (ovenRentTime > 0) {
         ovenRentTime--;
-        console.log(ovenRentTime)
     } else {
         clearInterval(ovenRentTimer)
         ovenRented = false;
