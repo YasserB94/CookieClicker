@@ -95,7 +95,7 @@ section {
 .game-element-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 16px;
     grid-row-gap: 0px;
     /* height: 50vh; */
@@ -147,18 +147,15 @@ section {
 .game-element-grid .game .cookie img:active{
     transform: scale(.99);
 }
-.game-element-grid .game .bonus-active{
-    grid-area: 4 / 1 / 4 / 2;
-    height: 10%;
-
-}
 .game-element-grid .game .bonus-passive{
-    grid-area: 4 / 2 / 4 / 3;
+    grid-area: 4 / 1 / 4 / 3;
     height: 10%;
+    text-align: left;
 }
 .game-element-grid .game .staff{
     grid-area: 4 / 3 / 4 / 4;
     height: 10%;
+    
 }
 /*Stats panel*/
 .game-element-grid .game-stats {
@@ -214,6 +211,24 @@ section {
     aspect-ratio: 1/1;
     cursor: pointer;
 }
+.game-explanation{
+    display: flex;
+    justify-content: center;
+}
+.game-explanation h3{
+    color: var(--clr-cookie-light);
+}
+.game-explanation h5{
+    color: var(--clr-accent);
+}
+.game-description,.shop-description{
+    background-color: var(--clr-bg);
+    border-radius: .5rem;
+    margin: 1rem;
+    padding: var(--padd-UI-global);
+}
+
+
 
 
 /*---FOOTER---*/
