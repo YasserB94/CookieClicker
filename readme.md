@@ -20,7 +20,7 @@ Making the game work and have some fun features will be my priority.
 - [ ] Add an about/contact page
 - [ ] Use acutal cookies(?) to keep player's score stored
 - [ ] Make the site responsive
-- [ ] Implement Upgrade ideas
+- [X] Implement Upgrade ideas
 #### Roadmap ####
 - [X] Have a design for the website
   - [X] Have a cookie friendly color palette
@@ -61,32 +61,43 @@ Making the game work and have some fun features will be my priority.
 - [X] Add logic to sell shop cookies and convert to credits
   - [X] set cookieprice and sell a cookie every x random seconds
   - [ ] implement upgrade to get more money per cookie sold
-  - [ ] implement upgrade to sell cookies faster
+  - [X] implement upgrade to sell cookies faster
+- [x] Display values in a panel
+![Game panel showing cookies clicked, credits and cookies in shop](assets/ReadMeImages/statsPanel.png)
 - [X] Add some sort of multiplier
   - [X] Add oven option to upgrade-shop pane
   - [X] Add oven level indicator to upgrade-stats pane
   - [X] Add price to oven upgrade
   - [X] Make cookie clicker increase cookies per click based on oven level
+![Oven upgrade icon](/assets/ReadMeImages/oven-upgrade.png)
 - [X] Add Economics upgrade
   - [X] Sell more cookies at a time
   - [X] Added extra check to make sure there are enough cookies
-- [ ] Add Cookie Quality Upgrade
-  - [ ] Earn tips, the user has a small chance to gain an extra credit/cookie sold
-
-
-- [ ] Upgrade Ideas
-  - [X] The user sells a cookie every x seconds and gains money to buy upgrades instead of using cookies
-    - [ ] Study Economy -> Cookies are converted to money quicker (Better business plan, more sales)
-    - [ ] Improve Recipe -> Cookies are converted to more money (Nicer cookies, larger price)
-    - [ ] Invest -> The user invests its current money and will get a passive money income
-  - [ ] Hire staff the user gets a helper that bakes cookies in a passive manner Tough good work aint cheap and cheap work aint good, *So tip your bartender!*
-    - [ ] Upgrade staff -> Train staff/hire someone better that has less chance of burning a cookie
-    - [ ] Improve Work conditions -> Staff will bake at a faster rate
-    - [ ] Possible debuff! The staff spills and ruins a batch of cookies in the shop - halves the cookies you bake for a bit
-    - [ ] Possible buff! The staff motivates you and gives you x seconds chance of double cookies\
-    - [ ] Multiple staff members ??
-  - [ ] The user bakes cookies by clicking
-    - [ ] Improve baking skills -> Less chance to burn a cookie
-    - [X] Improve Oven -> Amount of cookies that make it into the store has the chance to be a higher number
-        - Currently increases amount of cookies baked/click
-    - [ ] Holiday -> No cookies can be sold/made for x time, but when the time ends you get double sales and double cookies baked for x seconds(Battery recharged!)
+![Eco upgrade icon](/assets/ReadMeImages/eco-upgrade.png)
+- [X] Add a Find Staff upgrade
+  - [X] Have random staff members with random skills and moobs
+  - [X] Generate new staff if staff members run low
+  - [X] Have a x chance to hire a staff member
+  - [X] Increase hiring chance dependent on investment 
+  - [X] Let staff members bake cookies
+  - [X] Add cookies baked/min by staff to info
+  - [x] Have funny names for newly generated staff
+![Find staff](/assets/ReadMeImages/find-staff.png)
+- [X] Add Cookie Quality Upgrade
+  - [X] Earn tips, the user has a small chance to gain an extra credit/cookie sold
+  - [X] Tip chance gets increased if the cookie's recipe is upgraded
+![Improve recipe](/assets/ReadMeImages/improve-recipe.png)
+- [X] Rent an extra oven!
+  - [X] Staff members will use the upgraded oven instead of their own
+  - [X] The oven can be rented for a set amount of time
+  - [X] Price for renting depends on the amount of staff members in the shop
+![Rent Oven](/assets/ReadMeImages/rent-oven.png)
+- [X] Make Staff sell cookies
+  - [x] Staff will sell cookies isntead of baking
+  - [x] Add a new characteristic to staff members that determines how many cookies they sell/loop
+  - [x] the more money the user has the more money the staff wants to start baking again
+![Staff Changes jobs](/assets/ReadMeImages/change-jobs.png)
+- [X] Have panes explaining the game and upgrades to new players
+- [x] Have some juicy stats
+- [x] Have indicators for the staffs current job and the oven boost
+![info panels](/assets/ReadMeImages/infopanes.png)
