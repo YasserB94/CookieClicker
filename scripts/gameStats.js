@@ -8,10 +8,11 @@ export function update() {
 }
 export function draw() {
     drawCookiesBaked()
+    console.log(cookiesInShop)
 }
 export function bakeCookie() {
-    totalCookiesBaked += 1 * getOvenMultiplier();
-    cookiesInShop += 1 * getOvenMultiplier();
+    totalCookiesBaked = totalCookiesBaked+(1*getOvenMultiplier())
+    cookiesInShop = cookiesInShop+(1*getOvenMultiplier())
 }
 export function checkShopCookieStock() {
     return cookiesInShop;
@@ -21,7 +22,7 @@ export function addCookie(amount){
     totalCookiesBaked+=amount;
 }
 export function sellCookie(amountOfCookiesSold) {
-    cookiesInShop -= 1 * amountOfCookiesSold;
+    cookiesInShop = cookiesInShop-(1 * amountOfCookiesSold);
 }
 function drawCookiesBaked() {
     document.getElementById('cookies-baked').innerText = '';

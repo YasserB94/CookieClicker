@@ -146,20 +146,21 @@ function drawJobChange() {
 function updateCredits() {
     const cookiesToSell = economyMultiplier[economicLevel];
     if (checkShopCookieStock() > cookiesToSell) {
-        sellCookie(cookiesToSell);
         cookiesToCredits(cookiesToSell);
+        sellCookie(cookiesToSell);
     } else {
         return;
     }
 }
 function cookiesToCredits(amount) {
     if (checkShopCookieStock() > amount) {
-        credits += amount * 1;
+        credits = credits+amount;
         sellCookie(amount)
+        for (let i = 0; i < amount; i++) {
+            earnTips();
+        }
     }
-    for (let i = 0; i < amount; i++) {
-        earnTips();
-    }
+    
 }
 //OVEN
 document.getElementById('upgrade-oven').addEventListener('click', upgradeOven)
