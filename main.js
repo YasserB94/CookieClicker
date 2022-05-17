@@ -4,7 +4,7 @@ import {update as updateGameStats,draw as drawGameStats} from './scripts/gameSta
 import {update as updateGamePanel,draw as drawGamePanel} from './scripts/gamePanel.js'
 
 let timeSinceLastRender = 0;
-const FPS = 5;
+const FPS = 11;
 let framesRan = 0;
 function main(currentTime) {
     //Ask the browser if the function can be ran

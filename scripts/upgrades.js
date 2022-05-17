@@ -19,7 +19,7 @@ let ovenmultiplier = [1, 2, 4, 6, 10, 14, 20, 25, 50, 100, 125, 150, 175, 200, 2
 let chanceToEarnTips = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
 let economyMultiplier = [1, 2, 3, 4, 5, 7, 9, 11, 13, 15, 19, 23, 27, 31, 35, 40, 45, 50, 60, 70, 80, 90, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300];
 let chanceToFindStaff = [10, 15, 20, 25, 30, 35, 40, 45, 50, 100]
-let upgradeCosts = [10, 50, 100, 250, 500, 1000, 2500, 5000, 7500, 10000, 12500, 15000, 17500, 20000, 25000, 30000, 35000, 40000, 45000, 50000, 55000, 60000, 65000, 70000, 75000, 80000, 85000, 90000, 100000]
+let upgradeCosts = [10, 50, 100, 250, 500, 750, 1250, 1750, 2250, 3000, 3750, 4500, 5250, 6000, 7000, 8000, 9000, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 75000, 80000, 85000, 90000, 100000]
 function updateArrays() {
     increaseArrayItems(ovenmultiplier, ovenLevel);
     increaseArrayItems(chanceToEarnTips, economicLevel);
@@ -313,7 +313,7 @@ function rentOven() {
     if (credits >= 250 * currentStaffCount && currentStaffCount != 0) {
         credits -= currentStaffCount * 1000;
         ovenRented = true;
-        ovenRentTime += 10;
+        ovenRentTime += 30;
         ovenRentTimer = setInterval(reduceRentTime, 1000);
     } else {
         return;
