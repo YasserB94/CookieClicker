@@ -128,8 +128,12 @@ Making the game work and have some fun features will be my priority.
 #### To Fix ####
 - [ ] Rebalance upgrade costs
 - [ ] Rebalance staff search cost scaling
+- [ ] Rebalance Oven
+- [ ] Indicator when max level tips is reached
 - [ ] Sales per second does not add Staff Sales
 - [ ] Make tip amount scale properly
+- [ ] Toggling staff between baking/selling 
+      After toggling back to baking can't go back to sales
 #### To Add ####
 - [ ] Time warp feature
     Temporarily speed up time
