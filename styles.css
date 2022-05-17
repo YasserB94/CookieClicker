@@ -143,7 +143,9 @@ section {
    height: 20rem;
    aspect-ratio: 1/1;
    cursor: pointer;
-
+}
+.game-element-grid .game .cookie img:active{
+    transform: scale(.99);
 }
 .game-element-grid .game .bonus-active{
     grid-area: 4 / 1 / 4 / 2;
