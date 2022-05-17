@@ -3,7 +3,7 @@ import { sellCookie, checkShopCookieStock, addCookie } from "./gameStats.js";
 //Stats
 let cookiesBakedByStaffPerSecond = 0;
 //Credits
-let credits = 0;
+let credits = 5000;
 //Upgrade levels
 let ovenLevel = 0;
 let cookieQuality = 0;
@@ -133,7 +133,7 @@ document.getElementById('upgrade-staff').addEventListener('click', upgradeStaff)
 function upgradeStaff() {
     
     if (credits >= upgradeCosts[staffLevel]+staffIncreasedCostPerMember) {
-        credits -= upgradeCosts[staffLevel]
+        credits -= (upgradeCosts[staffLevel]+staffIncreasedCostPerMember)
         let hireChanceString = '0';
         hireChanceString += chanceToFindStaff[staffLevel];
         const hireChance = parseInt(hireChanceString)
@@ -165,7 +165,7 @@ function upgradeStaff() {
             console.log(staffPool)
             //If a member gets hired, the chance and cost go back down
             staffLevel = 0;
-            staffIncreasedCostPerMember = (hiredStaff.length*1000)+(hiredStaff.length*1000);
+            staffIncreasedCostPerMember = (hiredStaff.length*1000);
         } else {
             //If a member does not get found the chance and the cost go up
             staffLevel += 1;
