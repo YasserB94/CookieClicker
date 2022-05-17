@@ -5,6 +5,7 @@ import {update as updateGamePanel,draw as drawGamePanel} from './scripts/gamePan
 
 let timeSinceLastRender = 0;
 const FPS = 5;
+
 function main(currentTime) {
     //Ask the browser if the function can be ran
     window.requestAnimationFrame(main);
