@@ -3,6 +3,7 @@ import { sellCookie, checkShopCookieStock, addCookie } from "./gameStats.js";
 //Stats
 let credits = 0;
 let cookiesBakedByStaffPerSecond = 0;
+let cookiesSoldByStaffPerSecond = 0;
 //Upgrade levels
 let ovenLevel = 0;
 let cookieQuality = 0;
@@ -10,6 +11,9 @@ let economicLevel = 0;
 let staffLevel = 0;
 let totalTipsEarned = 0;
 let ovenRented = false;
+
+let staffBaking = true;
+let staffSelling = false;
 //Upgrade stats
 let ovenmultiplier = [1, 2, 4, 6, 10, 14, 20, 25, 50, 100, 125, 150, 175, 200, 225, 250, 275, 300];
 let chanceToEarnTips = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
@@ -35,23 +39,20 @@ const staffPool = [
     {
         name: 'Captain Baker',
         workSpeed: 1,
-        hunger: 1,
-        happyBonus: 2,
-        sadPenalty: 1
+        saleSkill: 5,
+        willingToChangeJobs: 3
     },
     {
         name: 'Cookie Popper',
         workSpeed: 3,
-        hunger: 1,
-        happyBonus: 2,
-        sadPenalty: 5
+        saleSkill: 3,
+        willingToChangeJobs: 3
     },
     {
         name: 'Uber Baker',
         workSpeed: 5,
-        hunger: 4,
-        happyBonus: 4,
-        sadPenalty: 10
+        saleSkill: 1,
+        willingToChangeJobs: 3
     }
 ]
 const hiredStaff = [];
@@ -59,7 +60,9 @@ let staffIncreasedCostPerMember = hiredStaff.length;
 export function update() {
     updateCredits();
     staffBakesCookies();
+    staffSellsCookies();
     updateArrays();
+    costToChangeJobs();
 }
 export function draw() {
     drawCredits();
@@ -68,6 +71,7 @@ export function draw() {
     drawStaff();
     drawQuality();
     drawRentedOven();
+    drawJobChange();
 }
 function drawShop() {
     document.getElementById('oven-upgrade-cost').innerText = `${upgradeCosts[ovenLevel]} credits`;
@@ -99,7 +103,7 @@ function drawStaff() {
 }
 function drawRentedOven() {
     if (ovenRented) {
-        document.getElementById('rent-oven-title').innerText = "Oven Rented !";
+        document.getElementById('rent-oven-title').innerText = "Your staff has an epic Oven!";
         document.getElementById('rent-oven-timer').innerText = `Time left with extra oven:${ovenRentTime}`
 
     } else {
@@ -107,7 +111,7 @@ function drawRentedOven() {
         document.getElementById('rent-oven-timer').innerText = "";
     }
     const currentStaffCount = hiredStaff.length;
-    document.getElementById('rent-oven-cost').innerText = `${currentStaffCount*250} credits`;
+    document.getElementById('rent-oven-cost').innerText = `${currentStaffCount * 1000} credits`;
 
 }
 function drawQuality() {
@@ -120,6 +124,24 @@ function drawQuality() {
     }
     document.getElementById('tip-chance').innerText = `Tip Chance: ${chanceToEarnTips[cookieQuality]}%`
 }
+function drawJobChange() {
+    if (staffSelling) {
+        document.getElementById('staff-change-cost').innerText = `${costToChangeJobs()} Credits`
+        document.getElementById('staff-action-description').innerText = `Staff is`;
+        document.getElementById('staff-action').innerText = `Selling Cookies`;
+        document.getElementById('staff-action-shop').innerText = `Bake Cookies`;
+    } else if ((hiredStaff.length > 0) && staffBaking) {
+        document.getElementById('staff-change-cost').innerText = `1000 Credits`
+        document.getElementById('staff-action-description').innerText = `Staff is`;
+        document.getElementById('staff-action').innerText = `Baking Cookies`;
+        document.getElementById('staff-action-shop').innerText = `Sell Cookies`;
+    }else{
+        document.getElementById('staff-change-cost').innerText = `No Staff`
+        document.getElementById('staff-action-description').innerText = ``;
+        document.getElementById('staff-action').innerText = ``;
+        document.getElementById('staff-action-shop').innerText = ``;
+    }
+}
 //Credits
 function updateCredits() {
     const cookiesToSell = economyMultiplier[economicLevel];
@@ -131,8 +153,13 @@ function updateCredits() {
     }
 }
 function cookiesToCredits(amount) {
-    credits += amount * 1;
-    earnTips();
+    if (checkShopCookieStock() > amount) {
+        credits += amount * 1;
+        sellCookie(amount)
+    }
+    for (let i = 0; i < amount; i++) {
+        earnTips();
+    }
 }
 //OVEN
 document.getElementById('upgrade-oven').addEventListener('click', upgradeOven)
@@ -211,18 +238,22 @@ function upgradeStaff() {
     }
 }
 function staffBakesCookies() {
-    if (!ovenRented) {
-        hiredStaff.forEach(staffmember => {
-            const cookiesBakedbyStaffMember = staffmember.workSpeed;
-            cookiesBakedByStaffPerSecond += cookiesBakedbyStaffMember;
-            addCookie(cookiesBakedbyStaffMember);
-        });
-    } else if (ovenRented) {
-        hiredStaff.forEach(staffmember => {
-            const cookiesBakedbyStaffMember = ovenmultiplier[ovenLevel];
-            cookiesBakedByStaffPerSecond += cookiesBakedbyStaffMember;
-            addCookie(cookiesBakedbyStaffMember);
-        });
+    if (staffBaking) {
+        if (!ovenRented) {
+            hiredStaff.forEach(staffmember => {
+                const cookiesBakedbyStaffMember = staffmember.workSpeed;
+                cookiesBakedByStaffPerSecond += cookiesBakedbyStaffMember;
+                addCookie(cookiesBakedbyStaffMember);
+            });
+        } else if (ovenRented) {
+            hiredStaff.forEach(staffmember => {
+                const cookiesBakedbyStaffMember = ovenmultiplier[ovenLevel];
+                cookiesBakedByStaffPerSecond += cookiesBakedbyStaffMember;
+                addCookie(cookiesBakedbyStaffMember);
+            });
+        }
+    } else {
+        return;
     }
 
 }
@@ -236,10 +267,9 @@ function createStaffMember() {
     }
     const newStaffMember = {
         name: newmembername,
-        workSpeed: randomNumber(8),
-        hunger: randomNumber(8),
-        happyBonus: randomNumber(5),
-        sadPenalty: randomNumber(5)
+        workSpeed: randomNumber(10),
+        saleSkill: randomNumber(10),
+        willingToChangeJobs: randomNumber(10)
     }
     staffPool.push(newStaffMember);
 }
@@ -279,8 +309,8 @@ let ovenRentTimer;
 function rentOven() {
     const currentStaffCount = hiredStaff.length;
 
-    if (credits >= 250*currentStaffCount && currentStaffCount!=0) {
-        credits -= currentStaffCount*250;
+    if (credits >= 250 * currentStaffCount && currentStaffCount != 0) {
+        credits -= currentStaffCount * 1000;
         ovenRented = true;
         ovenRentTime += 10;
         ovenRentTimer = setInterval(reduceRentTime, 1000);
@@ -295,6 +325,53 @@ function reduceRentTime() {
         clearInterval(ovenRentTimer)
         ovenRented = false;
     }
+}
+//Change Staff Jobs
+function staffSellsCookies() {
+    if (staffSelling) {
+        hiredStaff.forEach(staffmember => {
+            const cookiesSoldByStaffMember = staffmember.saleSkill;
+            cookiesToCredits(cookiesSoldByStaffMember);
+        });
+    } else {
+        return;
+    }
+}
+function costToChangeJobs() {
+    let cost = credits;
+    cost = Math.round(cost / 1000);
+    cost *= 100;
+    let staffWillingToChangeJobs = 0;
+    hiredStaff.forEach(staffmember => {
+        const staffMemberCostToChangeJobs = staffmember.willingToChangeJobs;
+        staffWillingToChangeJobs += staffMemberCostToChangeJobs;
+    });
+    cost *= Math.round(staffWillingToChangeJobs / 2)
+    return cost;
+}
+document.getElementById('staff-change').addEventListener('click', staffChangesJobs)
+function staffChangesJobs() {
+    if(hiredStaff.length<1)return;
+    let staffJobChangeCost = 0;
+    if (staffBaking) {
+        staffJobChangeCost = costToChangeJobs();
+    } else {
+        staffJobChangeCost = 1000;
+    }
+    if (credits >= staffJobChangeCost) {
+        credits -= staffJobChangeCost
+        if (staffBaking) {
+            staffSelling = true;
+            staffBaking = false;
+        } else if (staffSelling) {
+            staffBaking = true;
+            staffSelling = false;
+        }
+    } else {
+        return;
+    }
+
+
 }
 function randomNumber(max) {
     return Math.floor(Math.random() * max)
