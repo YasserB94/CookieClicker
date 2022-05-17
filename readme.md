@@ -123,3 +123,19 @@ Making the game work and have some fun features will be my priority.
 - [x] Have indicators for the staffs current job and the oven boost
 
 ![info panels](/assets/ReadMeImages/infopanes.png)
+
+
+#### To Fix ####
+- [ ] Rebalance upgrade costs
+- [ ] Rebalance staff search cost scaling
+- [ ] Sales per second does not add Staff Sales
+- [ ] Make tip amount scale properly
+#### To Add ####
+- [ ] Time warp feature
+    Temporarily speed up time
+    Debuff that slows down time ?
+- [ ] Achievments!
+- [ ] Save current progress in to cookie
+- [ ] Scoreboard => Current top 10 with most cookies
+- [ ] Prevent JS cheating
+  - At least detect it to keep scoreboard fair
