@@ -5,7 +5,7 @@ import {update as updateGamePanel,draw as drawGamePanel} from './scripts/gamePan
 
 let timeSinceLastRender = 0;
 const FPS = 5;
-
+let framesRan = 0;
 function main(currentTime) {
     //Ask the browser if the function can be ran
     window.requestAnimationFrame(main);
@@ -15,8 +15,12 @@ function main(currentTime) {
     if(secondsSinceLastRender < 1 / FPS)return;
     //Give set the current loop itteration time to timeSinceLastRender
     timeSinceLastRender = currentTime;
+    //UpdateGameLogic
     update();
+    //UpdateGameView
     draw();
+    framesRan++;
+
 }
 //Run Game
 window.requestAnimationFrame(main);

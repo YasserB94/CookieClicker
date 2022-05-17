@@ -13,9 +13,24 @@ let totalTipsEarned =0;
 //Upgrade stats
 let ovenmultiplier = [1, 2, 4, 6, 10, 14, 20, 25, 50, 100,125,150,175,200,225,250,275,300];
 let chanceToEarnTips = [1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100];
-let economyMultiplier = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14,15,16,17,18,19,20];
+let economyMultiplier = [1, 2, 3, 4, 5, 7, 9, 11, 13, 15,19,23,27,31,35,40,45,50,60,70,80,90,100,120,140,160,180,200,220,240,260,280,300];
 let chanceToFindStaff = [10, 15, 20, 25, 30, 35, 40, 45, 50, 100]
-let upgradeCosts = [10, 50, 100, 250, 500, 1000, 2500, 5000, 7500, 10000, 12500, 15000, 17500, 20000, 25000, 30000, 35000, 40000, 45000, 50000]
+let upgradeCosts = [10, 50, 100, 250, 500, 1000, 2500, 5000, 7500, 10000, 12500, 15000, 17500, 20000, 25000, 30000, 35000, 40000, 45000, 50000,55000,60000,65000,70000,75000,80000,85000,90000,100000]
+function updateArrays(){
+    increaseArrayItems(ovenmultiplier,ovenLevel);
+    increaseArrayItems(chanceToEarnTips,economicLevel);
+    increaseArrayItems(economyMultiplier,economicLevel)
+}
+function increaseArrayItems(array,upgradeLevel){
+    const arrayLength = array.length-1;
+    if(upgradeLevel>=arrayLength){
+        const newItem = array[arrayLength-1]*2;
+        array.push(newItem)
+    }else{
+        return;
+    }    
+}
+const newStaffNames = ['Master Molly','BakeRaider Tomb','Holy Cannoli','Sugar Daddy','The Muffin Man','']
 const staffPool = [
     {
         name: 'Captain Baker',
@@ -33,7 +48,7 @@ const staffPool = [
     },
     {
         name: 'Uber Baker',
-        workSpeed: 6,
+        workSpeed: 5,
         hunger: 4,
         happyBonus: 4,
         sadPenalty: 10
@@ -45,6 +60,7 @@ let staffIncreasedCostPerMember = hiredStaff.length;
 export function update() {
     updateCredits();
     staffBakesCookies();
+    updateArrays();
 }
 export function draw() {
     drawCredits();
@@ -72,6 +88,7 @@ function drawStaff() {
     document.getElementById('staff-list').innerHTML = "";
     document.getElementById('staff-upgrade-cost').innerText = `${upgradeCosts[staffLevel]+staffIncreasedCostPerMember} credits`;
     document.getElementById('staff-level').innerText = `Level: ${staffLevel + 1}`;
+    document.getElementById('hiring-chance').innerText =`Chance to gain staff on next search: ${chanceToFindStaff[staffLevel]}%`
     hiredStaff.forEach(staffmember => {
         const newStaffListElement = document.createElement('li')
         newStaffListElement.innerText = staffmember.name;
@@ -85,8 +102,11 @@ function drawQuality() {
     document.getElementById('quality-upgrade-cost').innerText = `${upgradeCosts[cookieQuality]} credits`;
     document.getElementById('quality-level').innerText = `Level: ${cookieQuality + 1}`
     document.getElementById('tips-earned-total').innerText = `Total tips earned: ${totalTipsEarned}`
+    if(cookieQuality>=chanceToEarnTips.length){
+        document.getElementById('tip-chance').innerText = `Amazing cookies! Double Tips`
+        return;
+    }
     document.getElementById('tip-chance').innerText = `Tip Chance: ${chanceToEarnTips[cookieQuality]}%`
-
 }
 //Credits
 function updateCredits() {
@@ -105,6 +125,9 @@ function cookiesToCredits(amount) {
 //OVEN
 document.getElementById('upgrade-oven').addEventListener('click', upgradeOven)
 function upgradeOven() {
+    if (upgradeCosts[ovenLevel]>=upgradeCosts.length){
+        increaseArrayItems(upgradeCosts,upgradeCosts.length)
+    }
     if (credits >= upgradeCosts[ovenLevel]) {
         credits -= upgradeCosts[ovenLevel]
         ovenLevel += 1
@@ -118,6 +141,9 @@ export function getOvenMultiplier() {
 //Economy
 document.getElementById('upgrade-economy').addEventListener('click', upgradeEconomy)
 function upgradeEconomy() {
+    if (upgradeCosts[economicLevel]>=upgradeCosts.length){
+        increaseArrayItems(upgradeCosts,upgradeCosts.length)
+    }
     if (credits >= upgradeCosts[economicLevel]) {
         credits -= upgradeCosts[economicLevel]
         economicLevel += 1
@@ -131,7 +157,6 @@ export function getEconomyMultiplier() {
 //Staff
 document.getElementById('upgrade-staff').addEventListener('click', upgradeStaff)
 function upgradeStaff() {
-    
     if (credits >= upgradeCosts[staffLevel]+staffIncreasedCostPerMember) {
         credits -= (upgradeCosts[staffLevel]+staffIncreasedCostPerMember)
         let hireChanceString = '0';
@@ -184,19 +209,27 @@ function staffBakesCookies() {
 }
 //Generates random extra staffmember with random stats between 1-10;
 function createStaffMember() {
+    let newmembername = 'Bleep The Robot';
+    if(newStaffNames.length>0){
+    const randomIndex = randomNumber(newStaffNames.length);
+    newmembername = newStaffNames[randomIndex];
+    newStaffNames.splice(randomIndex,1);
+    }
     const newStaffMember = {
-        name: `BleepBloopBleep`,
-        workSpeed: randomNumber(10),
-        hunger: randomNumber(10),
-        happyBonus: randomNumber(10),
-        sadPenalty: randomNumber(10)
+        name: newmembername,
+        workSpeed: randomNumber(8),
+        hunger: randomNumber(8),
+        happyBonus: randomNumber(5),
+        sadPenalty: randomNumber(5)
     }
     staffPool.push(newStaffMember);
 }
-
 //Cookie Quality
 document.getElementById('upgrade-quality').addEventListener('click', upgradeQuality)
 function upgradeQuality() {
+    if (upgradeCosts[cookieQuality]>=upgradeCosts.length-1){
+        increaseArrayItems(upgradeCosts,upgradeCosts.length-1)
+    }
     if (credits >= upgradeCosts[cookieQuality]) {
         credits -= upgradeCosts[cookieQuality]
         cookieQuality += 1
@@ -205,6 +238,12 @@ function upgradeQuality() {
     }
 }
 function earnTips(){
+    //If cookieQuality = maxlvl increase tips earned
+    if(cookieQuality>=chanceToEarnTips.length){
+        totalTipsEarned++
+        totalTipsEarned++
+        return;
+    }
     //Create random number see if it matches, increase odds based on lvl
     let tempString = '0';
         tempString += chanceToEarnTips[cookieQuality];
@@ -214,11 +253,6 @@ function earnTips(){
             totalTipsEarned++
         }
 }
-
-
-
-
-
 function randomNumber(max) {
     return Math.floor(Math.random() * max)
 }
