@@ -33,8 +33,8 @@
             <div class="game-element-grid">
                 <div class="game">
                     <div class="buffs">
-                        <h3>Buffs</h3>
-                        <p>Motivated</p>
+                        <h3 id="rent-oven-title"></h3>
+                        <p id="rent-oven-timer"></p>
                     </div>
                     <div class="debuffs">
                         <h3>Debuffs</h3>
@@ -84,15 +84,15 @@
                             <p id="oven-level">1</p>
                         </div>
                         <div class="status-item">
-                            <img src="./assets/cookieClicker/upgrades/economics.webp" alt="Pictogram of an oven">
+                            <img src="./assets/cookieClicker/upgrades/economics.webp" alt="Pictogram of an economic book">
                             <p id="economy-level">1</p>
                         </div>
                         <div class="status-item">
-                            <img src="./assets/cookieClicker/upgrades/recruitment.webp" alt="Pictogram of an oven">
+                            <img src="./assets/cookieClicker/upgrades/recruitment.webp" alt="Pictogram of a loop with cards">
                             <p id="staff-level">Level: 1</p>
                         </div>
                         <div class="status-item">
-                            <img src="./assets/cookieClicker/upgrades/Quality.webp" alt="Pictogram of an oven">
+                            <img src="./assets/cookieClicker/upgrades/Quality.webp" alt="Pictogram of a clipboard">
                             <p id="quality-level">Level: 1</p>
                         </div>
                     </div>
@@ -124,6 +124,12 @@
                         <img src="./assets/cookieClicker/upgrades/Quality.webp" alt="Pictogram of a loop looking over papers" id="upgrade-quality">
                         <p id="quality-upgrade-cost">10 credits</p>
                     </div>
+                    <div class="shop-item">
+                        <p>Rent</p>
+                        <p>Oven</p>
+                        <img src="./assets/cookieClicker/upgrades/rentOven.webp" alt="Pictogram of another oven" id="rent-oven">
+                        <p id="rent-oven-cost">1000 credits</p>
+                    </div>
                 </div>
                 </div>
             </div>
@@ -150,6 +156,10 @@
                 <h5>Improve Recipe:</h5>
                 <p>Good cookies = happy customers</p>
                 <p>The better your recipe the higher chance your customers might tip you when they buy cookies</p>
+                <h5>Rent an Oven:</h5>
+                <p>Your staff tries it's best to bake you cookies while you have a fancy oven</p>
+                <p>rent an extra oven and your staff will temporarily bake cookies with the rented oven instead of their own!</p>
+                <p>The rented oven will produce the same amount of cookies you do everytime a staffmember bakes</p>
             </div>
         </section>
     </main>

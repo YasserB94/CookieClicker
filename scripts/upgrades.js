@@ -3,34 +3,35 @@ import { sellCookie, checkShopCookieStock, addCookie } from "./gameStats.js";
 //Stats
 let cookiesBakedByStaffPerSecond = 0;
 //Credits
-let credits = 0;
+let credits = 500000;
 //Upgrade levels
 let ovenLevel = 0;
 let cookieQuality = 0;
 let economicLevel = 0;
 let staffLevel = 0;
-let totalTipsEarned =0;
+let totalTipsEarned = 0;
+let ovenRented = false;
 //Upgrade stats
-let ovenmultiplier = [1, 2, 4, 6, 10, 14, 20, 25, 50, 100,125,150,175,200,225,250,275,300];
-let chanceToEarnTips = [1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100];
-let economyMultiplier = [1, 2, 3, 4, 5, 7, 9, 11, 13, 15,19,23,27,31,35,40,45,50,60,70,80,90,100,120,140,160,180,200,220,240,260,280,300];
+let ovenmultiplier = [1, 2, 4, 6, 10, 14, 20, 25, 50, 100, 125, 150, 175, 200, 225, 250, 275, 300];
+let chanceToEarnTips = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+let economyMultiplier = [1, 2, 3, 4, 5, 7, 9, 11, 13, 15, 19, 23, 27, 31, 35, 40, 45, 50, 60, 70, 80, 90, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300];
 let chanceToFindStaff = [10, 15, 20, 25, 30, 35, 40, 45, 50, 100]
-let upgradeCosts = [10, 50, 100, 250, 500, 1000, 2500, 5000, 7500, 10000, 12500, 15000, 17500, 20000, 25000, 30000, 35000, 40000, 45000, 50000,55000,60000,65000,70000,75000,80000,85000,90000,100000]
-function updateArrays(){
-    increaseArrayItems(ovenmultiplier,ovenLevel);
-    increaseArrayItems(chanceToEarnTips,economicLevel);
-    increaseArrayItems(economyMultiplier,economicLevel)
+let upgradeCosts = [10, 50, 100, 250, 500, 1000, 2500, 5000, 7500, 10000, 12500, 15000, 17500, 20000, 25000, 30000, 35000, 40000, 45000, 50000, 55000, 60000, 65000, 70000, 75000, 80000, 85000, 90000, 100000]
+function updateArrays() {
+    increaseArrayItems(ovenmultiplier, ovenLevel);
+    increaseArrayItems(chanceToEarnTips, economicLevel);
+    increaseArrayItems(economyMultiplier, economicLevel)
 }
-function increaseArrayItems(array,upgradeLevel){
-    const arrayLength = array.length-1;
-    if(upgradeLevel>=arrayLength){
-        const newItem = array[arrayLength-1]*2;
+function increaseArrayItems(array, upgradeLevel) {
+    const arrayLength = array.length - 1;
+    if (upgradeLevel >= arrayLength) {
+        const newItem = array[arrayLength - 1] * 2;
         array.push(newItem)
-    }else{
+    } else {
         return;
-    }    
+    }
 }
-const newStaffNames = ['Master Molly','BakeRaider Tomb','Holy Cannoli','Sugar Daddy','The Muffin Man','']
+const newStaffNames = ['Master Molly', 'BakeRaider Tomb', 'Holy Cannoli', 'Sugar Daddy', 'The Muffin Man']
 const staffPool = [
     {
         name: 'Captain Baker',
@@ -56,7 +57,6 @@ const staffPool = [
 ]
 const hiredStaff = [];
 let staffIncreasedCostPerMember = hiredStaff.length;
-
 export function update() {
     updateCredits();
     staffBakesCookies();
@@ -68,6 +68,7 @@ export function draw() {
     drawEconomy();
     drawStaff();
     drawQuality();
+    drawRentedOven();
 }
 function drawShop() {
     document.getElementById('oven-upgrade-cost').innerText = `${upgradeCosts[ovenLevel]} credits`;
@@ -86,23 +87,33 @@ function drawEconomy() {
 }
 function drawStaff() {
     document.getElementById('staff-list').innerHTML = "";
-    document.getElementById('staff-upgrade-cost').innerText = `${upgradeCosts[staffLevel]+staffIncreasedCostPerMember} credits`;
+    document.getElementById('staff-upgrade-cost').innerText = `${upgradeCosts[staffLevel] + staffIncreasedCostPerMember} credits`;
     document.getElementById('staff-level').innerText = `Level: ${staffLevel + 1}`;
-    document.getElementById('hiring-chance').innerText =`Chance to gain staff on next search: ${chanceToFindStaff[staffLevel]}%`
+    document.getElementById('hiring-chance').innerText = `Chance to gain staff on next search: ${chanceToFindStaff[staffLevel]}%`
     hiredStaff.forEach(staffmember => {
         const newStaffListElement = document.createElement('li')
         newStaffListElement.innerText = staffmember.name;
         document.getElementById('staff-list').appendChild(newStaffListElement)
     });
-    document.getElementById('cookies-by-staff-per-minute').innerText = `Staff cookies baked per min: ${cookiesBakedByStaffPerSecond*60}`
+    document.getElementById('cookies-by-staff-per-minute').innerText = `Staff cookies baked per min: ${cookiesBakedByStaffPerSecond * 60}`
     cookiesBakedByStaffPerSecond = 0;
+}
+function drawRentedOven() {
+    if (ovenRented) {
+        document.getElementById('rent-oven-title').innerText = "Oven Rented !";
+        document.getElementById('rent-oven-timer').innerText = `Time left with extra oven:${ovenRentTime}`
+
+    } else {
+        document.getElementById('rent-oven-title').innerText = "";
+        document.getElementById('rent-oven-timer').innerText = "";
+    }
 
 }
 function drawQuality() {
     document.getElementById('quality-upgrade-cost').innerText = `${upgradeCosts[cookieQuality]} credits`;
     document.getElementById('quality-level').innerText = `Level: ${cookieQuality + 1}`
     document.getElementById('tips-earned-total').innerText = `Total tips earned: ${totalTipsEarned}`
-    if(cookieQuality>=chanceToEarnTips.length){
+    if (cookieQuality >= chanceToEarnTips.length) {
         document.getElementById('tip-chance').innerText = `Amazing cookies! Double Tips`
         return;
     }
@@ -125,8 +136,8 @@ function cookiesToCredits(amount) {
 //OVEN
 document.getElementById('upgrade-oven').addEventListener('click', upgradeOven)
 function upgradeOven() {
-    if (upgradeCosts[ovenLevel]>=upgradeCosts.length){
-        increaseArrayItems(upgradeCosts,upgradeCosts.length)
+    if (upgradeCosts[ovenLevel] >= upgradeCosts.length) {
+        increaseArrayItems(upgradeCosts, upgradeCosts.length)
     }
     if (credits >= upgradeCosts[ovenLevel]) {
         credits -= upgradeCosts[ovenLevel]
@@ -141,8 +152,8 @@ export function getOvenMultiplier() {
 //Economy
 document.getElementById('upgrade-economy').addEventListener('click', upgradeEconomy)
 function upgradeEconomy() {
-    if (upgradeCosts[economicLevel]>=upgradeCosts.length){
-        increaseArrayItems(upgradeCosts,upgradeCosts.length)
+    if (upgradeCosts[economicLevel] >= upgradeCosts.length) {
+        increaseArrayItems(upgradeCosts, upgradeCosts.length)
     }
     if (credits >= upgradeCosts[economicLevel]) {
         credits -= upgradeCosts[economicLevel]
@@ -157,8 +168,8 @@ export function getEconomyMultiplier() {
 //Staff
 document.getElementById('upgrade-staff').addEventListener('click', upgradeStaff)
 function upgradeStaff() {
-    if (credits >= upgradeCosts[staffLevel]+staffIncreasedCostPerMember) {
-        credits -= (upgradeCosts[staffLevel]+staffIncreasedCostPerMember)
+    if (credits >= upgradeCosts[staffLevel] + staffIncreasedCostPerMember) {
+        credits -= (upgradeCosts[staffLevel] + staffIncreasedCostPerMember)
         let hireChanceString = '0';
         hireChanceString += chanceToFindStaff[staffLevel];
         const hireChance = parseInt(hireChanceString)
@@ -172,7 +183,7 @@ function upgradeStaff() {
             //LIMIT STAFF TO 5
             // if (hiredStaff.length >=5 ){
             //     console.log('true')
-               
+
             //     const deleteRandomIndex = randomNumber(hiredStaff.length);
             //     for(let i = 0;i<hiredStaff.length;i++){
             //         if(i===deleteRandomIndex){
@@ -184,13 +195,13 @@ function upgradeStaff() {
             const randomIndex = randomNumber(staffPool.length)
             //Select a random staff member from the array
             const newStaff = staffPool[randomIndex]
-            staffPool.splice(randomIndex,1)
-            
+            staffPool.splice(randomIndex, 1)
+
             hiredStaff.push(newStaff)
             console.log(staffPool)
             //If a member gets hired, the chance and cost go back down
             staffLevel = 0;
-            staffIncreasedCostPerMember = (hiredStaff.length*1000);
+            staffIncreasedCostPerMember = (hiredStaff.length * 250);
         } else {
             //If a member does not get found the chance and the cost go up
             staffLevel += 1;
@@ -200,20 +211,28 @@ function upgradeStaff() {
     }
 }
 function staffBakesCookies() {
-    
-    hiredStaff.forEach(staffmember => {
-        const cookiesBakedbyStaffMember = staffmember.workSpeed;
-        cookiesBakedByStaffPerSecond+=cookiesBakedbyStaffMember;
-        addCookie(cookiesBakedbyStaffMember);
-    });
+    if (!ovenRented) {
+        hiredStaff.forEach(staffmember => {
+            const cookiesBakedbyStaffMember = staffmember.workSpeed;
+            cookiesBakedByStaffPerSecond += cookiesBakedbyStaffMember;
+            addCookie(cookiesBakedbyStaffMember);
+        });
+    } else if (ovenRented) {
+        hiredStaff.forEach(staffmember => {
+            const cookiesBakedbyStaffMember = ovenmultiplier[ovenLevel];
+            cookiesBakedByStaffPerSecond += cookiesBakedbyStaffMember;
+            addCookie(cookiesBakedbyStaffMember);
+        });
+    }
+
 }
 //Generates random extra staffmember with random stats between 1-10;
 function createStaffMember() {
     let newmembername = 'Bleep The Robot';
-    if(newStaffNames.length>0){
-    const randomIndex = randomNumber(newStaffNames.length);
-    newmembername = newStaffNames[randomIndex];
-    newStaffNames.splice(randomIndex,1);
+    if (newStaffNames.length > 0) {
+        const randomIndex = randomNumber(newStaffNames.length);
+        newmembername = newStaffNames[randomIndex];
+        newStaffNames.splice(randomIndex, 1);
     }
     const newStaffMember = {
         name: newmembername,
@@ -227,8 +246,8 @@ function createStaffMember() {
 //Cookie Quality
 document.getElementById('upgrade-quality').addEventListener('click', upgradeQuality)
 function upgradeQuality() {
-    if (upgradeCosts[cookieQuality]>=upgradeCosts.length-1){
-        increaseArrayItems(upgradeCosts,upgradeCosts.length-1)
+    if (upgradeCosts[cookieQuality] >= upgradeCosts.length - 1) {
+        increaseArrayItems(upgradeCosts, upgradeCosts.length - 1)
     }
     if (credits >= upgradeCosts[cookieQuality]) {
         credits -= upgradeCosts[cookieQuality]
@@ -237,21 +256,44 @@ function upgradeQuality() {
         return;
     }
 }
-function earnTips(){
+function earnTips() {
     //If cookieQuality = maxlvl increase tips earned
-    if(cookieQuality>=chanceToEarnTips.length){
+    if (cookieQuality >= chanceToEarnTips.length) {
         totalTipsEarned++
         totalTipsEarned++
         return;
     }
     //Create random number see if it matches, increase odds based on lvl
     let tempString = '0';
-        tempString += chanceToEarnTips[cookieQuality];
-        const tipChance = parseInt(tempString)
-        if(Math.random()<=(tipChance/100)){
-            credits++
-            totalTipsEarned++
-        }
+    tempString += chanceToEarnTips[cookieQuality];
+    const tipChance = parseInt(tempString)
+    if (Math.random() <= (tipChance / 100)) {
+        credits++
+        totalTipsEarned++
+    }
+}
+//Rent An Oven
+document.getElementById('rent-oven').addEventListener('click', rentOven);
+let ovenRentTime = 0;
+let ovenRentTimer;
+function rentOven() {
+    if (credits >= 1000) {
+        credits -= 1000;
+        ovenRented = true;
+        ovenRentTime += 10;
+        ovenRentTimer = setInterval(reduceRentTime, 1000);
+    } else {
+        return;
+    }
+}
+function reduceRentTime() {
+    if (ovenRentTime > 0) {
+        ovenRentTime--;
+        console.log(ovenRentTime)
+    } else {
+        clearInterval(ovenRentTimer)
+        ovenRented = false;
+    }
 }
 function randomNumber(max) {
     return Math.floor(Math.random() * max)
