@@ -8,7 +8,6 @@ export function update() {
 }
 export function draw() {
     drawCookiesBaked()
-    console.log(cookiesInShop)
 }
 export function bakeCookie() {
     totalCookiesBaked = totalCookiesBaked+(1*getOvenMultiplier())
@@ -17,6 +16,7 @@ export function bakeCookie() {
 export function checkShopCookieStock() {
     return cookiesInShop;
 }
+
 export function addCookie(amount){
     cookiesInShop+=amount;
     totalCookiesBaked+=amount;

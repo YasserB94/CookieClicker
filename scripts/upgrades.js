@@ -144,16 +144,16 @@ function drawJobChange() {
 }
 //Credits
 function updateCredits() {
-    const cookiesToSell = economyMultiplier[economicLevel];
-    if (checkShopCookieStock() > cookiesToSell) {
+    const cookiesToSell = 1*economyMultiplier[economicLevel];
+    if (checkShopCookieStock() >= cookiesToSell) {
         cookiesToCredits(cookiesToSell);
-        sellCookie(cookiesToSell);
+        // sellCookie(cookiesToSell);
     } else {
         return;
     }
 }
 function cookiesToCredits(amount) {
-    if (checkShopCookieStock() > amount) {
+    if (checkShopCookieStock() >= amount) {
         credits = credits+amount;
         sellCookie(amount)
         for (let i = 0; i < amount; i++) {
